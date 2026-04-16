@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Kitten</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+    }
+
+    h1 {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 60px;
+      color: #ff4da6;
+      text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff66b2, 0 0 30px #ff3385;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff99cc;
+      }
+      to {
+        text-shadow: 0 0 30px #ff3385, 0 0 50px #ff1a75;
+      }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4da6;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkleAnim 3s infinite;
+    }
+
+    @keyframes sparkleAnim {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #ff66b2;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Hello Kitten 🐱💖</h1>
+
+<div class="footer">Made with love 💕</div>
+
+<script>
+  // Create floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 7000);
+  }
+
+  setInterval(createHeart, 300);
+
+  // Sparkles ✨
+  function createSparkle() {
+    const sp = document.createElement("div");
+    sp.classList.add("sparkle");
+
+    sp.style.left = Math.random() * 100 + "vw";
+    sp.style.top = Math.random() * 100 + "vh";
+
+    document.body.appendChild(sp);
+
+    setTimeout(() => {
+      sp.remove();
+    }, 3000);
+  }
+
+  setInterval(createSparkle, 200);
+</script>
+
+</body>
+</html>
